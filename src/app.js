@@ -22,6 +22,6 @@ app.use(express.urlencoded({extended: false}));
 //Routes
 app.use("/api/students", studentsRouter);
 app.use("/api/teachers", teachersRouter);
-app.use("/api/subjects", subjectsRouter)
+app.use("/api/subjects", subjectsRouter);
 
 export default app;

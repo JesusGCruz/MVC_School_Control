@@ -22,39 +22,30 @@
 <body>
     <div class="container">
         <div class="row mb-2">
-            <!--Aquí va la navbar-->
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">School Control</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                        data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false"
+                        aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <div class="collapse navbar-collapse" id="navbarScroll">
+                        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+                            style="--bs-scroll-height: 100px;">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                <a class="nav-link active" aria-current="page"
+                                    href="https://github.com/JesusGCruz">Social Media</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Dropdown
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
+                                <a class="nav-link active" href="/api/teachers/getAll">Teachers</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                                <a class="nav-link disabled" aria-disabled="true"
+                                    href="/api/teachers/getAll">Teachers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/api/subjects/getAll">Subjects</a>
                             </li>
                         </ul>
                         <form class="d-flex" role="search">
@@ -70,35 +61,52 @@
                 <!--Aquí va el formulario-->
                 <div class="card">
                     <div class="card-body">
-                        <form action="/api/students/insertOne" method="POST">
+                        <form action="/api/teachers/insertOne" method="POST">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <label for="txtStudentId" class="form-label">Número de control</label>
-                                    <input type="text" class="form-control" id="txtStudentId" name="student_id" />
+                                    <label for="txtTeacherId" class="form-label">Número de control</label>
+                                    <input type="text" class="form-control" id="txtTeacherId" name="teacher_id"
+                                        placeholder="X22390055" />
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="txtName" class="form-label">Nombres</label>
-                                    <input type="text" class="form-control" id="txtName" name="name" />
+                                    <input type="text" class="form-control" id="txtName" name="name"
+                                        placeholder="Pedro Pablo" />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <label for="txtLastName" class="form-label">Apellidos</label>
-                                    <input type="text" class="form-control" id="txtLastName" name="lastname" />
+                                    <input type="text" class="form-control" id="txtLastName" name="lastname"
+                                        placeholder="Pica Papas" />
                                 </div>
                                 <div class="col-lg-6">
-                                    <label for="txtGrade" class="form-label">Grado</label>
-                                    <input type="number" class="form-control" id="txtGrade" name="grade" />
+                                    <label for="txtAge" class="form-label">Edad</label>
+                                    <input type="number" class="form-control" id="txtAge" name="age" placeholder="45" />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <label for="txtGroup" class="form-label">Grupo</label>
-                                    <input type="text" class="form-control" id="txtGroup" name="group" />
+                                    <label for="txtEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="txtEmail" name="email"
+                                        placeholder="holamundo@gmail.com" />
                                 </div>
                                 <div class="col-lg-6">
-                                    <label for="txtAverage" class="form-label">Promedio</label>
-                                    <input type="number" class="form-control" id="txtAverage" name="average" />
+                                    <label for="txtArea" class="form-label">Area</label>
+                                    <input type="text" class="form-control" id="txtArea" name="area"
+                                        placeholder="Sistemas" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="txtSalary" class="form-label">Salario</label>
+                                    <input type="text" class="form-control" id="txtSalary" name="salary"
+                                        placeholder="15,000" />
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="txtYears_of_service" class="form-label">Años de Servicio</label>
+                                    <input type="number" class="form-control" id="txtYears_of_service"
+                                        name="years_of_service" placeholder="15" />
                                 </div>
                             </div>
                             <div class="row">
@@ -109,6 +117,7 @@
                         </form>
                     </div>
                 </div>
+
             </div>
             <div class="col-lg-7">
                 <!--Aquí va la tabla-->
@@ -118,39 +127,49 @@
                             <th scope="col">No. Control</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido</th>
-                            <th scope="col">Grado</th>
-                            <th scope="col">Grupo</th>
-                            <th scope="col">Promedio</th>
+                            <th scope="col">Edad</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Area</th>
+                            <th scope="col">Salario</th>
+                            <th scope="col">Años de Servicio</th>
                             <th scope="col" colspan="2">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <%students.forEach(student=> {%>
+                        <%teachers.forEach(teacher=> {%>
                             <tr>
                                 <td>
-                                    <%=student.student_id%>
+                                    <%=teacher.teacher_id%>
                                 </td>
                                 <td>
-                                    <%=student.name%>
+                                    <%=teacher.name%>
                                 </td>
                                 <td>
-                                    <%=student.lastname%>
+                                    <%=teacher.lastname%>
                                 </td>
                                 <td>
-                                    <%=student.grade%>
+                                    <%=teacher.age%>
                                 </td>
                                 <td>
-                                    <%=student.group%>
+                                    <%=teacher.email%>
                                 </td>
                                 <td>
-                                    <%=student.average%>
+                                    <%=teacher.area%>
                                 </td>
                                 <td>
-                                    <a href="/api/students/getOne/<%= student.student_id %>" class="btn btn-warning"><i class="material-icons">edit</i></a>
-                                    
+                                    <%=teacher.salary%>
                                 </td>
                                 <td>
-                                    <a href="/api/students/deleteOne/<%= student.student_id %>" class="btn btn-danger"><i class="material-icons">delete</i></a>
+                                    <%=teacher.years_of_service%>
+                                </td>
+                                <td>
+                                    <a href="/api/teachers/getOne/<%= teacher.teacher_id %>" class="btn btn-warning"><i
+                                            class="material-icons">edit</i></a>
+
+                                </td>
+                                <td>
+                                    <a href="/api/teachers/deleteOne/<%= teacher.teacher_id %>"
+                                        class="btn btn-danger"><i class="material-icons">delete</i></a>
                                 </td>
                             </tr>
                             <% }); %>
@@ -158,7 +177,7 @@
                 </table>
             </div>
         </div>
-    </div>
+
 </body>
 
 </html>

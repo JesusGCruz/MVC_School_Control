@@ -27,9 +27,9 @@
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <a class="navbar-brand">Editar a <%= student.student_id %></a>
-                        </div>
-                        <button class="btn btn-outline-danger me-2" type="button">Cancelar</button>
+                            <a class="navbar-brand">Editar a <%= teacher.teacher_id %></a>
+                    </div>
+                    <button class="btn btn-outline-danger me-2" type="button">Cancelar</button>
                 </div>
             </nav>
         </div>
@@ -38,41 +38,53 @@
                 <!--Aquí va el formulario-->
                 <div class="position-relative card">
                     <div class="card-body">
-                        <form action="/api/students/updateOne/<%= student.student_id %>" method="POST">
+                        <form action="/api/teachers/updateOne/<%= teacher.teacher_id %>" method="POST">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <label for="txtStudentId" class="form-label" >Número de control</label>
-                                    <input type="text" class="form-control" id="txtStudentId" name="student_id"
-                                        value="<%= student.student_id %>" disabled/>
+                                    <label for="txtTeacherId" class="form-label">Número de control</label>
+                                    <input type="text" class="form-control" id="txtTeacherId" name="teacher_id"
+                                        placeholder="X22390055" value="<%= teacher.teacher_id %>" disabled />
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="txtName" class="form-label">Nombres</label>
                                     <input type="text" class="form-control" id="txtName" name="name"
-                                        value="<%= student.name %>" />
+                                        placeholder="Pedro Pablo" value="<%= teacher.name %>" />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <label for="txtLastName" class="form-label">Apellidos</label>
                                     <input type="text" class="form-control" id="txtLastName" name="lastname"
-                                        value="<%= student.lastname %>" />
+                                        placeholder="Pica Papas" value="<%= teacher.lastname %>" />
                                 </div>
                                 <div class="col-lg-6">
-                                    <label for="txtGrade" class="form-label">Grado</label>
-                                    <input type="number" class="form-control" id="txtGrade" name="grade"
-                                        value="<%= student.grade %>" />
+                                    <label for="txtAge" class="form-label">Edad</label>
+                                    <input type="number" class="form-control" id="txtAge" name="age" placeholder="45"
+                                        value="<%= teacher.age %>" />
+                                </div>
+                            </div>
+                            <div class=" row">
+                                <div class="col-lg-6">
+                                    <label for="txtEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="txtEmail" name="email"
+                                        placeholder="holamundo@gmail.com" value="<%= teacher.email %>" />
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="txtArea" class="form-label">Area</label>
+                                    <input type="text" class="form-control" id="txtArea" name="area"
+                                        placeholder="Sistemas" value="<%= teacher.area %>" />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <label for="txtGroup" class="form-label">Grupo</label>
-                                    <input type="text" class="form-control" id="txtGroup" name="group"
-                                        value="<%= student.group %>" />
+                                    <label for="txtSalary" class="form-label">Salario</label>
+                                    <input type="text" class="form-control" id="txtSalary" name="salary"
+                                        placeholder="15,000" value="<%= teacher.salary %>" />
                                 </div>
                                 <div class="col-lg-6">
-                                    <label for="txtAverage" class="form-label">Promedio</label>
-                                    <input type="number" class="form-control" id="txtAverage" name="average"
-                                        value="<%= student.average %>" />
+                                    <label for="txtYears_of_service" class="form-label">Años de Servicio</label>
+                                    <input type="number" class="form-control" id="txtYears_of_service"
+                                        name="years_of_service" placeholder="15" value="<%= teacher.years_of_service %>" />
                                 </div>
                             </div>
                             <div class="row">
@@ -80,7 +92,7 @@
                                     <button type="submit" class="btn btn-primary mt-3">Guardar</button>
                                 </div>
                                 <div class="col-lg-3">
-                                    <a href="/api/students/getAll" class="btn btn-danger mt-3">Cancelar</a>
+                                    <a href="/api/teachers/getAll" class="btn btn-danger mt-3">Cancelar</a>
                                 </div>
                             </div>
                         </form>

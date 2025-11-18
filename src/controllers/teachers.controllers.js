@@ -4,9 +4,7 @@ const teachersControllers = {};
 teachersControllers.getAll = (req, res) => {
     teacherDaos.getAll()
         .then((teachers) => {
-            res.json({
-                data: teachers
-            })
+            res.render('indexTeachers.ejs', { teachers })
         })
         .catch((err) => {
             res.status(500).json({
@@ -20,9 +18,7 @@ teachersControllers.getOne = (req, res) => {
     teacherDaos.getOne(req.params.teacher_id)
         .then((teacher) => {
             if (teacher) {
-                res.json({
-                    data: teacher
-                })
+                res.render('editTeachers.ejs', {teacher})
             } else {
                 res.status(404).json({
                     message: "Teacher Not Found :(",
@@ -41,10 +37,7 @@ teachersControllers.getOne = (req, res) => {
 teachersControllers.insertOne = (req, res) => {
     teacherDaos.insertOne(req.body)
         .then((teacherInserted) => {
-            res.status(201).json({
-                message: "Teacher inserted :)",
-                teacher_data: teacherInserted
-            })
+            res.redirect("/api/teachers/getAll");
         })
         .catch((err) => {
             res.status(500).json({
@@ -58,10 +51,7 @@ teachersControllers.updateOne = (req, res) => {
     teacherDaos.updateOne(req.params.teacher_id, req.body)
         .then((teacherUpdated) => {
             if (teacherUpdated) {
-                res.json({
-                    message: "Teacher updated :)",
-                    old_data: teacherUpdated
-                })
+                res.redirect("/api/teachers/getAll");
             } else {
                 res.status(404).json({
                     message: "Teacher Not Found :(",
@@ -81,10 +71,7 @@ teachersControllers.deleteOne = (req, res) => {
     teacherDaos.deleteOne(req.params.teacher_id)
         .then((teacherDeleted) => {
             if (teacherDeleted) {
-                res.json({
-                    message: "Teacher deleted :)",
-                    deleted_data: teacherDeleted
-                })
+                res.redirect("/api/teachers/getAll");
             } else {
                 res.status(404).json({
                     message: "Teacher Not Found :(",
