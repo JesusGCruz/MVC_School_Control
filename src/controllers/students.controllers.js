@@ -6,8 +6,8 @@ studentsControllers.getAll = (req, res) => {
     studentsDaos.getAll()
         //.then((students) => {res.json({ data: students })})
         .then(students => {
-            //res.json({ data: students })  
-            res.render('indexStudents.ejs', { students })
+            res.json({ data: students })  
+            //res.render('indexStudents.ejs', { students })
         })
         .catch((err) => {
             res.status(500).json({
@@ -22,7 +22,8 @@ studentsControllers.getOne = (req, res) => {
         .then((student) => {
             //condicion ? siEsVerdadero : siEsFalso;
             student ?
-                res.render('edit.ejs', {student}) :
+                res.json({student: student}) :
+                //res.render('edit.ejs', {student}) :
                 res.status(404).json({
                     data: { message: "Student not found 😔" }
                 });
@@ -53,7 +54,10 @@ studentsControllers.getOne = (req, res) => {
 studentsControllers.insertOne = async (req, res) => {
     studentsDaos.insertOne(req.body)
         .then((newStudent) => {
-            res.redirect("/api/students/getAll");
+            //res.redirect("/api/students/getAll");
+            res.json({message: "student created",
+                "New Student": newStudent
+            });
         })
         .catch((error) => {
             res.status(500).json({ message: error.message })
@@ -63,7 +67,8 @@ studentsControllers.insertOne = async (req, res) => {
 studentsControllers.updateOne = async (req, res) => {
     studentsDaos.updateOne(req.params.student_id, req.body)
         .then((updateStudent) => {
-            res.redirect("/api/students/getAll");
+            //res.redirect("/api/students/getAll");
+            res.json({message: "Student update"});
         })
         .catch((error) => {
             res.status(500).json({ message: error.message })
@@ -74,7 +79,8 @@ studentsControllers.deleteOne = async (req, res) => {
     studentsDaos.deleteOne(req.params.student_id)
         .then((studentDeleted) => {
             if (studentDeleted) {
-                res.redirect("/api/students/getAll");
+                //res.redirect("/api/students/getAll");
+                res.json({message: "Student Deleted"});
             } else {
                 res.status(404).json({
                     message: "Student Not Found",

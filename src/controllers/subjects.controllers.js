@@ -4,7 +4,8 @@ const subjectsControllers = {};
 subjectsControllers.getAll = (req, res) => {
     subjectsDaos.getAll()
         .then((subjects) => {
-            res.render('indexSubjects.ejs', { subjects })
+            //res.render('indexSubjects.ejs', { subjects })
+            res.json({subjects: subjects});
         })
         .catch((err) => {
             res.status(500).json({

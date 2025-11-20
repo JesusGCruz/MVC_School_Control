@@ -7,8 +7,8 @@ router.get("/getOne/:student_id", studentsControllers.getOne);
 
 router.post("/insertOne", studentsControllers.insertOne)
 
-router.post("/updateOne/:student_id", studentsControllers.updateOne);
+router.put("/updateOne/:student_id", studentsControllers.updateOne);
 
-router.get("/deleteOne/:student_id", studentsControllers.deleteOne);
+router.delete("/deleteOne/:student_id", studentsControllers.deleteOne);
 
 export default router;
