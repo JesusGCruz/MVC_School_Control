@@ -1,3 +1,4 @@
 /node_modules
 client-subject.http
 client-teacher.http
+.env
