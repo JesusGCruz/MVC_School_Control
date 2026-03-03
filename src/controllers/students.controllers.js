@@ -6,7 +6,7 @@ studentsControllers.getAll = (req, res) => {
     studentsDaos.getAll()
         //.then((students) => {res.json({ data: students })})
         .then(students => {
-            res.json({ data: students })  
+            res.json(students)  
             //res.render('indexStudents.ejs', { students })
         })
         .catch((err) => {
@@ -55,9 +55,7 @@ studentsControllers.insertOne = async (req, res) => {
     studentsDaos.insertOne(req.body)
         .then((newStudent) => {
             //res.redirect("/api/students/getAll");
-            res.json({message: "student created",
-                "New Student": newStudent
-            });
+            res.json(newStudent);
         })
         .catch((error) => {
             res.status(500).json({ message: error.message })

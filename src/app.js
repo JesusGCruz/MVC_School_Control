@@ -10,7 +10,7 @@ const app = express();
 
 //Settings (set)
 app.disable('x-powered-by');
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 3500);
 app.set("view engine", "ejs");
 app.set("views", "./src/views");
 
