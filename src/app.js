@@ -1,6 +1,7 @@
 //Aquí se genera la instancia de express (la pura configuración, no se inicializa)
 import express from 'express';
 import morgan from 'morgan';
+import cors from 'cors';
 import ejs from 'ejs';
 import studentsRouter from './routes/students.routes.js';
 import teachersRouter from './routes/teachers.routes.js';
@@ -17,7 +18,8 @@ app.set("views", "./src/views");
 //Midderware (use)
 app.use(express.json());
 app.use(morgan("dev"));
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
+app.use(cors({ origin: "*" }));
 
 //Routes
 app.use("/api/students", studentsRouter);
