@@ -58,7 +58,7 @@ studentsControllers.insertOne = async (req, res) => {
             res.json(newStudent);
         })
         .catch((error) => {
-            res.status(500).json({ message: error.message })
+            res.status(501).json(error.message )
         });
 }
 
