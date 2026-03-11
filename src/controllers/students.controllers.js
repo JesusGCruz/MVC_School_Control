@@ -22,7 +22,7 @@ studentsControllers.getOne = (req, res) => {
         .then((student) => {
             //condicion ? siEsVerdadero : siEsFalso;
             student ?
-                res.json({student: student}) :
+                res.json(student) :
                 //res.render('edit.ejs', {student}) :
                 res.status(404).json({
                     data: { message: "Student not found 😔" }
@@ -66,7 +66,7 @@ studentsControllers.updateOne = async (req, res) => {
     studentsDaos.updateOne(req.params.student_id, req.body)
         .then((updateStudent) => {
             //res.redirect("/api/students/getAll");
-            res.json({message: "Student update"});
+            res.json(updateStudent);
         })
         .catch((error) => {
             res.status(500).json({ message: error.message })
